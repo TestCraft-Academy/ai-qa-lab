@@ -5,7 +5,7 @@ from google.genai import types
 load_dotenv(find_dotenv())
 
 client = genai.Client()
-model_name = "gemini-3.8-flash"
+model_name = "gemini-3.6-flash"
 prompt = "Define the term 'Regression Test' in exactly one punchy sentence."
 
 for temp in [0.0, 1.0, 2.0]:
