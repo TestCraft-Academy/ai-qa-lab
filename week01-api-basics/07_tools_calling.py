@@ -31,7 +31,8 @@ if response.function_calls:
     
     # Execute tool safely
     try:
-        result = get_database_record(**fc.args)
+        args = fc.args or {}
+        result = get_database_record(**args)
         print(f"Tool execution succeeded: {result}")
     except Exception as e:
         print(f"Tool execution failed: {e}")
