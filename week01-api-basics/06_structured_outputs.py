@@ -1,7 +1,10 @@
 import json
+from dotenv import load_dotenv, find_dotenv
 from pydantic import BaseModel, Field
 from google import genai
 from google.genai import types
+
+load_dotenv(find_dotenv())
 
 class TestCase(BaseModel):
     id: str = Field(description="Format TC-###")

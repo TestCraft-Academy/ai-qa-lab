@@ -1,5 +1,8 @@
+from dotenv import load_dotenv, find_dotenv
 from google import genai
 from google.genai import types
+
+load_dotenv(find_dotenv())
 
 # 1. Define a tool
 def get_database_record(table: str, record_id: int) -> str:
