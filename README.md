@@ -48,7 +48,7 @@ Each demonstration script follows a disciplined QA defect pattern:
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/ai-qa-lab.git
+git clone https://github.com/TestCraft-Academy/ai-qa-lab.git
 cd ai-qa-lab
 
 # Create and activate a virtual environment
@@ -81,5 +81,5 @@ python 01-api-failure-surface/05_streaming_defects.py
 
 This repository contains **demonstrations** designed for inspection and video walkthroughs.
 
-If you are looking for **interactive lab exercises, broken systems under test (SUTs), automated Pytest suites, and challenges with solution keys**, see the companion workshop repository:
-👉 **[ai-qa-workshops](https://github.com/your-org/ai-qa-workshops)**
+If you are looking for **interactive lab exercises, broken systems under test (SUTs), automated Pytest suites, and challenges with solution keys**, visit TestCraft Academy:
+👉 **[TestCraft Academy](https://www.testcraftacademy.com/)**
