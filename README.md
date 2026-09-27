@@ -11,14 +11,11 @@ This repository accompanies the video tutorials and articles on AI Testing & Eva
 
 ```text
 ai-qa-lab/
-├── 01-api-failure-surface/            # The 7 core failure modes of raw LLM APIs
-│   ├── 01_token_cost_and_densities.py
-│   ├── 02_context_limits_and_truncation.py
-│   ├── 03_temperature_and_variance.py
-│   ├── 04_guardrail_bypass_side_channels.py
-│   ├── 05_streaming_defects.py
-│   ├── 06_schema_vs_semantic_validity.py
-│   └── 07_tool_calling_vulnerabilities.py
+├── 01-api-failure-surface/            # The 7 core failure modes across providers
+│   ├── 01_token_cost_and_densities.py # 6-model cross-provider tokenization benchmark
+│   ├── gemini/                        # Google Gemini implementation (google-genai)
+│   ├── OpenAI/                        # OpenAI implementation (openai)
+│   └── Anthropic/                     # Anthropic Claude implementation (anthropic)
 ├── 02-nondeterminism-and-sampling/    # [Roadmap] Pass@k, variance distributions across 30 runs
 ├── 03-rag-failure-modes/              # [Roadmap] Retrieval misses, chunking errors, context poisoning
 ├── 04-eval-metrics-and-judges/        # [Roadmap] String vs. semantic metrics, LLM-as-judge calibration
@@ -43,7 +40,10 @@ Each demonstration script follows a disciplined QA defect pattern:
 
 ### 1. Prerequisites
 - Python 3.10+
-- Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/)
+- API keys for the providers you wish to test:
+  - Google Gemini API Key from [Google AI Studio](https://aistudio.google.com/)
+  - OpenAI API Key from [OpenAI Platform](https://platform.openai.com/)
+  - Anthropic API Key from [Anthropic Console](https://console.anthropic.com/)
 
 ### 2. Installation
 ```bash
@@ -58,21 +58,24 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Configure your API key
+# Configure your API keys
 cp .env.example .env
-# Edit .env and paste: GEMINI_API_KEY="your-api-key-here"
+# Edit .env and paste your GEMINI_API_KEY, OPENAI_API_KEY, and/or ANTHROPIC_API_KEY
 ```
 
 ### 3. Run a Demonstration
 ```bash
-# Example: Observe silent truncation and downstream JSON crashes
-python 01-api-failure-surface/02_context_limits_and_truncation.py
+# Gemini Examples:
+python 01-api-failure-surface/gemini/02_context_limits_and_truncation.py
+python 01-api-failure-surface/gemini/04_guardrail_bypass_side_channels.py
 
-# Example: Observe side-channel leaks bypassing system instructions
-python 01-api-failure-surface/04_guardrail_bypass_side_channels.py
+# OpenAI Examples:
+python 01-api-failure-surface/OpenAI/01_token_cost_and_densities.py
+python 01-api-failure-surface/OpenAI/06_schema_vs_semantic_validity.py
 
-# Example: Observe mid-stream disconnects and telemetry loss
-python 01-api-failure-surface/05_streaming_defects.py
+# Anthropic Examples:
+python 01-api-failure-surface/Anthropic/02_context_limits_and_truncation.py
+python 01-api-failure-surface/Anthropic/07_tool_calling_vulnerabilities.py
 ```
 
 ---
